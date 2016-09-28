@@ -1,0 +1,4 @@
+# Remove specific files
+.DS_Store
+.vscode/
+.idea/
