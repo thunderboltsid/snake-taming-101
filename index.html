@@ -23,7 +23,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://www.python.org/static/apple-touch-icon-114x114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://www.python.org/static/apple-touch-icon-72x72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="https://www.python.org/static/apple-touch-icon-precomposed.png">
-    <link rel="apple-touch-icon" href="https://www.python.org/static/apple-touch-icon-precomposed.png">/favicon.ico">
+    <link rel="apple-touch-icon" href="https://www.python.org/static/apple-touch-icon-precomposed.png">
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -154,13 +154,111 @@
             </section>
             <section class="seb" data-background="images/object_oriented.png">
                 <h2>Object Oriented</h2>
+                <ul>
+                    <li class="grad">Everything is an object</li>
+                    <li class="grad">Primitives (int, float, etc) are objects too</li>
+                    <li class="grad">Functions are `callable` objects</li>
+                </ul>
             </section>
             <section class="seb" data-background="images/duck_typed.jpg">
                 <h2>Duck Typed</h2>
+                <blockquote>
+                    If it walks like a duck and it quacks like a duck, it is a duck.
+                </blockquote>
             </section>
         </section>
         <section>
-            <section class="seb" data-background="images/toaster-hacks.jpg">
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Hello, world!</h2>
+                <pre>
+                    <code data-trim>
+print("Hello, World!")
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Comments in Python</h2>
+                <pre>
+                    <code data-trim>
+# This is a comment
+"""
+This is a multi line
+comment a.k.a. Docstring
+"""
+print("Hello, World!")
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Python main Types</h2>
+                <pre>
+                    <code data-trim>
+is_cute = True # this is a bool
+num = 10 # this is a int
+pi = 3.14 # this is a float
+name = "John Doe" # this is a str
+initial = 'j' # this is also a str
+docstr = """John Doe""" # this is also a str
+array = [1,2,3,4,5] # this is a list
+array = [1, 3.14, "lol"] # this is also a list
+dict = { # This is a dictionary
+    "name": "John Doe",
+    "email": "john@doe.com",
+    "age": 22
+}
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Python Loops: For... in...</h2>
+                <pre>
+                    <code>
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+for number in numbers:
+    print(number)
+
+for index in range(numbers):
+    print(numbers[index])
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Python Loops: while</h2>
+                <pre>
+                    <code>
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+index = 0
+while (index < len(numbers)):
+    print(numbers[index])
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Python functions</h2>
+                <pre>
+                    <code data-trim>
+def hello(name):
+    print("Hello, " + name)
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Python conditionals</h2>
+                <pre>
+                    <code data-trim>
+def fibonacci(n):
+    if (n < 0):
+        raise Exception("Negative fibonacci numbers don't exist")
+    elif (n == 0 or n == 1):
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
               <h2>HTTP Verbs</h2>
                 <ul>
                   <li class="grad">GET</li>
@@ -171,7 +269,7 @@
                 </ul>
             </section>
 
-            <section class="seb" data-background="images/toaster-hacks.jpg">
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
               <h2>GET</h2>
               <ul>
                 <li class="grad">URL Parameters</li>
@@ -181,7 +279,7 @@
               </code></pre>
             </section>
 
-            <section class="seb" data-background="images/toaster-hacks.jpg">
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
               <h2>POST</h2>
               <ul>
                 <li class="grad">Form Data</li>
@@ -191,7 +289,7 @@
               </code></pre>
             </section>
 
-            <section class="seb" data-background="images/toaster-hacks.jpg">
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
               <h2>More</h2>
               <ul>
                 <li class="grad">PUT</li>
@@ -322,23 +420,6 @@ app.run()
           </section>
 
 
-        </section>
-
-        <section>
-            <section class="seb" data-background="images/htcpcp.jpg">
-                <h2>HTML</h2>
-						<pre><code data-trim contenteditable>
-&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-        &lt;head&gt;
-            &lt;title&gt;Coffeepots&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-            &lt;img title="This is a coffeepot" src="images/coffeepot.html"&gt;
-        &lt;/body&gt;
-    &lt;/html&gt;
-                        </code></pre>
-            </section>
         </section>
         <section style="text-align: left;" class="seb" data-background="images/end.jpeg">
             <h1 style="color:white">THE END</h1>
