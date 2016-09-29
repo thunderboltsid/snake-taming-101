@@ -153,10 +153,10 @@
                 </ul>
             </section>
             <section class="seb" data-background="images/object_oriented.png">
-                <h2>Object Oriented</h2>
+                <h2 style="color:white">Object Oriented</h2>
                 <ul>
                     <li class="grad">Everything is an object</li>
-                    <li class="grad">Primitives (int, float, etc) are objects too</li>
+                    <li class="grad">Primitives are objects too</li>
                     <li class="grad">Functions are `callable` objects</li>
                 </ul>
             </section>
@@ -212,7 +212,7 @@ dict = { # This is a dictionary
             <section class="seb" data-background="images/python_repl.png">
                 <h2>Python Loops: For... in...</h2>
                 <pre>
-                    <code>
+                    <code data-trim>
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 for number in numbers:
     print(number)
@@ -225,7 +225,7 @@ for index in range(numbers):
             <section class="seb" data-background="images/python_repl.png">
                 <h2>Python Loops: while</h2>
                 <pre>
-                    <code>
+                    <code data-trim>
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 index = 0
 while (index < len(numbers)):
@@ -255,6 +255,74 @@ def fibonacci(n):
         return fibonacci(n-1) + fibonacci(n-2)
                     </code>
                 </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+            <h2>So, that's the basics... Let's move on!</h2>
+            </section>
+        </section>
+        <section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2 style="color: white">Python Type Hierarchy</h2>
+                <img src="images/type_heir.png">
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2 class="seb">Classes</h2>
+                <pre>
+                    <code>
+class Animal(object):
+    def __init__(self, sound=None, *args, **kwargs):
+        self._sound = sound
+  </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2>Inheritance</h2>
+                <pre>
+                    <code>
+class Animal(object):
+    def __init__(self, sound=None, *args, **kwargs):
+        self._sound = sound
+
+class Cat(Animal):
+    pass
+
+class Dog(Animal):
+    pass
+                    </code>
+                </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2 class="seb">Multiple Inheritance</h2>
+                <pre>
+                    <code>
+class MutatedMonster(Cat, Dog):
+    pass
+                    </code>
+                    </pre>
+            </section>
+            <section class="seb" data-background="images/python_repl.png">
+                <h2 class="seb">List Comprehension</h2>
+                <pre>
+                    <code>
+[x**2 for x in [2,3,4,5,6,7,8]]
+                    </code>
+                </pre>
+            </section>
+        </section>
+        <section>
+            <section class="seb" data-background="images/bug.png">
+            <h2>Python Debugger (pdb)</h2>
+            <ul>
+                <li class="grad">Part of Standard library</li>
+                <li class="grad">Interactive debugger for Python programs</li>
+            </ul>
+            <pre>
+                <code data-trim>
+import pdb; pdb.set_trace()
+                </code>
+            </pre>
+            </section>
+            <section class="seb" data-background="images/start_debugging.png">
             </section>
         </section>
         <section>
