@@ -182,7 +182,7 @@ print("Hello, World!")
                     <code data-trim>
 # This is a comment
 """
-This is a multi line 
+This is a multi line
 comment a.k.a. Docstring
 """
 print("Hello, World!")
@@ -276,6 +276,170 @@ import pdb; pdb.set_trace()
             <section class="seb" data-background="images/start_debugging.png">
             </section>
         </section>
+        <section>
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
+              <h2>HTTP Verbs</h2>
+                <ul>
+                  <li class="grad">GET</li>
+                  <li class="grad">POST</li>
+                  <li class="grad">PATCH</li>
+                  <li class="grad">PUT</li>
+                  <li class="grad">DELETE</li>
+                </ul>
+            </section>
+
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
+              <h2>GET</h2>
+              <ul>
+                <li class="grad">URL Parameters</li>
+              </ul>
+              <pre><code data-trim contenteditable>
+                http://google.com/search?q=toaster%20hack
+              </code></pre>
+            </section>
+
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
+              <h2>POST</h2>
+              <ul>
+                <li class="grad">Form Data</li>
+              </ul>
+              <pre><code data-trim contenteditable>
+                q:toaster hack
+              </code></pre>
+            </section>
+
+            <section class="seb" data-background="images/tim-berners-lee.jpg">
+              <h2>More</h2>
+              <ul>
+                <li class="grad">PUT</li>
+                <li class="grad">PATCH</li>
+                <li class="grad">DELETE</li>
+              </ul>
+            </section>
+        </section>
+
+          <section>
+            <section class="seb" data-background="images/toaster-hacks.jpg">
+              <h2>Flask</h2>
+              <ul>
+                <li class="grad">Install</li>
+                <li class="grad">Your first app</li>
+                <li class="grad">Let's make a TODO list</li>
+              </ul>
+            </section>
+
+            <section class="seb" data-background="images/toaster-hacks.jpg">
+                <h2>Install</h2>
+                <pre><code data-trim contenteditable>
+                  pip install Flask
+                </code></pre>
+            </section>
+
+            <section class="seb" data-background="images/toaster-hacks.jpg">
+                <h2>My First Web App</h2>
+                <pre><code data-trim contenteditable>
+#!/usr/bin/env python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+# Shared storage for our list of tasks
+tasks = [&quot;GenCS 1&quot;]
+
+@app.route(&quot;/&quot;)
+def home():
+    task_list = [&quot;&lt;li&gt;&quot; + task + &quot;&lt;/li&gt;&quot; for task in tasks]
+
+    return &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
+
+
+app.run()
+                </code></pre>
+            </section>
+
+            <section class="seb" data-background="images/toaster-hacks.jpg">
+                <h2>My Second Web App</h2>
+                <pre><code data-trim contenteditable>
+#!/usr/bin/env python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+# Shared storage for our list of tasks
+tasks = [&quot;GenCS 1&quot;]
+
+form = (&quot;&lt;form action='/' method='POST'&gt;&quot;
+        &quot;&lt;input autofocus type='text' name='task' /&gt;&quot;
+        &quot;&lt;input type='submit' /&gt;&quot;
+        &quot;&lt;/form&gt;&quot;)
+
+@app.route(&quot;/&quot;,  methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        new_task = request.form['task']
+        tasks.append(new_task)
+
+    task_list = [&quot;&lt;li&gt;&quot; + task + &quot;&lt;/li&gt;&quot; for task in tasks]
+
+    return form + &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
+
+
+app.run()
+                </code></pre>
+            </section>
+
+            <section class="seb" data-background="images/toaster-hacks.jpg">
+                <h2>My Third Web App</h2>
+                <pre><code data-trim contenteditable>
+#!/usr/bin/env python
+from flask import Flask, request
+
+app = Flask(__name__)
+
+# Shared storage for our list of tasks
+tasks = [&quot;GenCS 1&quot;]
+
+form = (&quot;&lt;form action='/' method='POST'&gt;&quot;
+        &quot;&lt;input autofocus type='text' name='task' /&gt;&quot;
+        &quot;&lt;input type='submit' /&gt;&quot;
+        &quot;&lt;/form&gt;&quot;)
+
+def delete_form(idx):
+    return (&quot;&lt;form action='/delete' method='POST'&gt;&quot;
+                &quot;&lt;input type='hidden' name='task' value='&quot; +
+                  str(idx) + &quot;' /&gt;&quot;
+                &quot;&lt;input type='submit' value='Delete'/&gt;&quot;
+                &quot;&lt;/form&gt;&quot;
+                )
+
+def task_list():
+    task_list = [&quot;&lt;li&gt;&quot; + task + delete_form(idx) +
+                  &quot;&lt;/li&gt;&quot; for idx, task in enumerate(tasks)]
+
+    return form + &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
+
+@app.route(&quot;/&quot;,  methods=['GET', 'POST'])
+def home():
+    if request.method == 'POST':
+        new_task = request.form['task']
+        tasks.append(new_task)
+
+    return task_list()
+
+@app.route(&quot;/delete&quot;, methods=['POST'])
+def delete():
+    tasks.pop(int(request.form['task']))
+
+    return task_list()
+
+
+app.run()
+                </code></pre>
+            </section>
+          </section>
+
+
+        </section>
         <section style="text-align: left;" class="seb" data-background="images/end.jpeg">
             <h1 style="color:white">THE END</h1>
 
@@ -286,7 +450,7 @@ import pdb; pdb.set_trace()
                 <br>
                 - <a href="https://www.coursera.org/learn/interactive-python-1" style="color:white">An Introduction
                  to Interactive Programming in Python</a> <br>
-                - <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/" style="color:white">After 
+                - <a href="http://www.afterhoursprogramming.com/tutorial/Python/Introduction/" style="color:white">After
                 hours programming in Python</a> <br>
                 - <a href="http://flask.pocoo.org/docs/0.11/" style="color:white">Flask documentation</a>
             </p>
