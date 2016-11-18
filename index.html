@@ -56,9 +56,6 @@
                 <small><a href="http://github.com/thunderboltsid" target="_blank">Siddharth Shukla</a> /
                     <a href="http://twitter.com/thunderboltsid" target="_blank">@thunderboltsid</a>
                 </small>
-                <small><a href="http://github.com/kuboschek" target="_blank">Leonhard
-                    Kuboschek</a> / <a href="http://twitter.com/kuboschek"
-                                   target="_blank">@kuboschek</a></small>
             </p>
         </section>
 
@@ -79,31 +76,14 @@
                     </li>
                 </ul>
             </section>
-            <section class="seb" data-background="images/leo.jpg">
-                <h2 style="color:#fff;">Leonhard Kuboschek</h2>
-                <ul>
-                    <li class="grad">
-                        Computer Science Student at JUB
-                    </li>
-                    <li class="grad">
-                        Doing Python since Summer 2012
-                    </li>
-                    <li class="grad">
-                        Past: Dolby Laboratories
-                    </li>
-                </ul>
-            </section>
         </section>
         <section>
             <section class="seb" data-background="images/agenda.jpg">
                 <ul>
                     <li class="gray">Introduction</li>
                     <li class="green">Basic Constructs of Python</li>
-                    <li class="blue">Intermediate Constructs of Python</li>
+                    <li class="blue">Some Intermediate Constructs of Python</li>
                     <li class="violet">Python Debugging Simplified</li>
-                    <li class="pink">HTTP requests and Flask</li>
-                    <li class="orange">Let's build a TODO app</li>
-                    <li class="red">Questions and Answers</li>
                 </ul>
             </section>
         </section>
@@ -113,7 +93,8 @@
                 <ul>
                     <li class="grad">know what seperates Python from other languages</li>
                     <li class="grad">know how to write basic Python</li>
-                    <li class="grad">be able to make a basic Python app using Flask</li>
+                    <li class="grad">understand some intermediate Python concepts</li>
+                    <li class="grad">learn how to debug Python applications</li>
                 </ul>
             </section>
         </section>
@@ -172,7 +153,7 @@
                 <h2>Hello, world!</h2>
                 <pre>
                     <code data-trim>
-print("Hello, World!")
+>>> print("Hello, World!")
                     </code>
                 </pre>
             </section>
@@ -180,12 +161,12 @@ print("Hello, World!")
                 <h2>Comments in Python</h2>
                 <pre>
                     <code data-trim>
-# This is a comment
-"""
-This is a multi line
-comment a.k.a. Docstring
-"""
-print("Hello, World!")
+>>> # This is a comment
+>>> """
+    This is a multi line
+    comment a.k.a. Docstring
+    """
+>>> print("Hello, World!")
                     </code>
                 </pre>
             </section>
@@ -193,19 +174,19 @@ print("Hello, World!")
                 <h2>Python main Types</h2>
                 <pre>
                     <code data-trim>
-is_cute = True # this is a bool
-num = 10 # this is a int
-pi = 3.14 # this is a float
-name = "John Doe" # this is a str
-initial = 'j' # this is also a str
-docstr = """John Doe""" # this is also a str
-array = [1,2,3,4,5] # this is a list
-array = [1, 3.14, "lol"] # this is also a list
-dict = { # This is a dictionary
-    "name": "John Doe",
-    "email": "john@doe.com",
-    "age": 22
-}
+>>> is_cute = True # this is a bool
+>>> num = 10 # this is a int
+>>> pi = 3.14 # this is a float
+>>> name = "John Doe" # this is a str
+>>> initial = 'j' # this is also a str
+>>> docstr = """John Doe""" # this is also a str
+>>> array = [1,2,3,4,5] # this is a list
+>>> array = [1, 3.14, "lol"] # this is also a list
+>>> dict = { # This is a dictionary
+            "name": "John Doe",
+            "email": "john@doe.com",
+            "age": 22
+           }
                     </code>
                 </pre>
             </section>
@@ -213,12 +194,16 @@ dict = { # This is a dictionary
                 <h2>Python Loops: For... in...</h2>
                 <pre>
                     <code data-trim>
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-for number in numbers:
-    print(number)
+>>> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> for number in numbers: # Playing with indexes is so 90s.
+        print(number)
 
-for index in range(numbers):
-    print(numbers[index])
+>>> # But Sid, I really really love indexes...
+>>> for index in range(numbers): # Can we make this nicer?
+	print("Number {} present at index {}".format(numbers[index], index))
+
+>>> for index, number in enumerate(numbers): # More Pythonic
+	print("Number {} present at index {}".format(number, index))
                     </code>
                 </pre>
             </section>
@@ -226,10 +211,10 @@ for index in range(numbers):
                 <h2>Python Loops: while</h2>
                 <pre>
                     <code data-trim>
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-index = 0
-while (index < len(numbers)):
-    print(numbers[index])
+>>> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+>>> index = 0
+>>> while (index < len(numbers)):
+        print(numbers[index])
                     </code>
                 </pre>
             </section>
@@ -237,8 +222,8 @@ while (index < len(numbers)):
                 <h2>Python functions</h2>
                 <pre>
                     <code data-trim>
-def hello(name):
-    print("Hello, " + name)
+>>> def hello(name):
+        print("Hello, " + name)
                     </code>
                 </pre>
             </section>
@@ -246,18 +231,18 @@ def hello(name):
                 <h2>Python conditionals</h2>
                 <pre>
                     <code data-trim>
-def fibonacci(n):
-    if (n < 0):
-        raise Exception("Negative fibonacci numbers don't exist")
-    elif (n == 0 or n == 1):
-        return 1
-    else:
-        return fibonacci(n-1) + fibonacci(n-2)
+>>> def fibonacci(n):
+        if (n < 0):
+            raise Exception("Negative fibonacci numbers don't exist")
+        elif (n == 0 or n == 1):
+            return 1
+        else:
+            return fibonacci(n-1) + fibonacci(n-2)
                     </code>
                 </pre>
             </section>
             <section class="seb" data-background="images/python_repl.png">
-            <h2>So, that's the basics... Let's move on!</h2>
+            <h2>So, that's the basics... Let's be more Pythonic!</h2>
             </section>
         </section>
         <section>
@@ -269,9 +254,9 @@ def fibonacci(n):
                 <h2 class="seb">Classes</h2>
                 <pre>
                     <code>
-class Animal(object):
-    def __init__(self, sound=None, *args, **kwargs):
-        self._sound = sound
+>>> class Animal(object):
+        def __init__(self, sound=None, *args, **kwargs):
+            self._sound = sound
   </code>
                 </pre>
             </section>
@@ -279,15 +264,17 @@ class Animal(object):
                 <h2>Inheritance</h2>
                 <pre>
                     <code>
-class Animal(object):
-    def __init__(self, sound=None, *args, **kwargs):
-        self._sound = sound
+>>> class Animal(object):
+        def __init__(self, sound=None):
+            self._sound = sound
 
-class Cat(Animal):
-    pass
+>>> class Cat(Animal):
+        def __init__(self, sound):
+            super(Cat, self).__init__(self, sound)
 
-class Dog(Animal):
-    pass
+>>> class Dog(Animal):
+        def __init__(self, sound):
+            super(Dog, self).__init__(self, sound)
                     </code>
                 </pre>
             </section>
@@ -295,11 +282,21 @@ class Dog(Animal):
                 <h2 class="seb">Multiple Inheritance</h2>
                 <pre>
                     <code>
-class MutatedMonster(Cat, Dog):
-    pass
+>>> class MutatedMonster(Cat, Dog):
+        def __init__(self):
+            super(MutatedMonster, self).__init__(self)
                     </code>
                     </pre>
+		    <h4>So what's the order of resolution?</h4>
             </section>
+            <section class="seb" data-background="images/python_repl.png">
+		    <h2 class="seb">Method Resolution Order</h2>
+		    <pre>
+			<code>
+>>> MutatedMonster.__mro__
+			</code>
+		    </pre>
+	    </section>
             <section class="seb" data-background="images/python_repl.png">
                 <h2 class="seb">List Comprehension</h2>
                 <pre>
@@ -324,170 +321,6 @@ import pdb; pdb.set_trace()
             </section>
             <section class="seb" data-background="images/start_debugging.png">
             </section>
-        </section>
-        <section>
-            <section class="seb" data-background="images/tim-berners-lee.jpg">
-              <h2>HTTP Verbs</h2>
-                <ul>
-                  <li class="grad">GET</li>
-                  <li class="grad">POST</li>
-                  <li class="grad">PATCH</li>
-                  <li class="grad">PUT</li>
-                  <li class="grad">DELETE</li>
-                </ul>
-            </section>
-
-            <section class="seb" data-background="images/tim-berners-lee.jpg">
-              <h2>GET</h2>
-              <ul>
-                <li class="grad">URL Parameters</li>
-              </ul>
-              <pre><code data-trim contenteditable>
-                http://google.com/search?q=toaster%20hack
-              </code></pre>
-            </section>
-
-            <section class="seb" data-background="images/tim-berners-lee.jpg">
-              <h2>POST</h2>
-              <ul>
-                <li class="grad">Form Data</li>
-              </ul>
-              <pre><code data-trim contenteditable>
-                q:toaster hack
-              </code></pre>
-            </section>
-
-            <section class="seb" data-background="images/tim-berners-lee.jpg">
-              <h2>More</h2>
-              <ul>
-                <li class="grad">PUT</li>
-                <li class="grad">PATCH</li>
-                <li class="grad">DELETE</li>
-              </ul>
-            </section>
-        </section>
-
-          <section>
-            <section class="seb" data-background="images/toaster-hacks.jpg">
-              <h2>Flask</h2>
-              <ul>
-                <li class="grad">Install</li>
-                <li class="grad">Your first app</li>
-                <li class="grad">Let's make a TODO list</li>
-              </ul>
-            </section>
-
-            <section class="seb" data-background="images/toaster-hacks.jpg">
-                <h2>Install</h2>
-                <pre><code data-trim contenteditable>
-                  pip install Flask
-                </code></pre>
-            </section>
-
-            <section class="seb" data-background="images/toaster-hacks.jpg">
-                <h2>My First Web App</h2>
-                <pre><code data-trim contenteditable>
-#!/usr/bin/env python
-from flask import Flask, request
-
-app = Flask(__name__)
-
-# Shared storage for our list of tasks
-tasks = [&quot;GenCS 1&quot;]
-
-@app.route(&quot;/&quot;)
-def home():
-    task_list = [&quot;&lt;li&gt;&quot; + task + &quot;&lt;/li&gt;&quot; for task in tasks]
-
-    return &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
-
-
-app.run()
-                </code></pre>
-            </section>
-
-            <section class="seb" data-background="images/toaster-hacks.jpg">
-                <h2>My Second Web App</h2>
-                <pre><code data-trim contenteditable>
-#!/usr/bin/env python
-from flask import Flask, request
-
-app = Flask(__name__)
-
-# Shared storage for our list of tasks
-tasks = [&quot;GenCS 1&quot;]
-
-form = (&quot;&lt;form action='/' method='POST'&gt;&quot;
-        &quot;&lt;input autofocus type='text' name='task' /&gt;&quot;
-        &quot;&lt;input type='submit' /&gt;&quot;
-        &quot;&lt;/form&gt;&quot;)
-
-@app.route(&quot;/&quot;,  methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        new_task = request.form['task']
-        tasks.append(new_task)
-
-    task_list = [&quot;&lt;li&gt;&quot; + task + &quot;&lt;/li&gt;&quot; for task in tasks]
-
-    return form + &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
-
-
-app.run()
-                </code></pre>
-            </section>
-
-            <section class="seb" data-background="images/toaster-hacks.jpg">
-                <h2>My Third Web App</h2>
-                <pre><code data-trim contenteditable>
-#!/usr/bin/env python
-from flask import Flask, request
-
-app = Flask(__name__)
-
-# Shared storage for our list of tasks
-tasks = [&quot;GenCS 1&quot;]
-
-form = (&quot;&lt;form action='/' method='POST'&gt;&quot;
-        &quot;&lt;input autofocus type='text' name='task' /&gt;&quot;
-        &quot;&lt;input type='submit' /&gt;&quot;
-        &quot;&lt;/form&gt;&quot;)
-
-def delete_form(idx):
-    return (&quot;&lt;form action='/delete' method='POST'&gt;&quot;
-                &quot;&lt;input type='hidden' name='task' value='&quot; +
-                  str(idx) + &quot;' /&gt;&quot;
-                &quot;&lt;input type='submit' value='Delete'/&gt;&quot;
-                &quot;&lt;/form&gt;&quot;
-                )
-
-def task_list():
-    task_list = [&quot;&lt;li&gt;&quot; + task + delete_form(idx) +
-                  &quot;&lt;/li&gt;&quot; for idx, task in enumerate(tasks)]
-
-    return form + &quot;&lt;ul&gt;&quot; + &quot;&quot;.join(task_list) + &quot;&lt;/ul&gt;&quot;
-
-@app.route(&quot;/&quot;,  methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        new_task = request.form['task']
-        tasks.append(new_task)
-
-    return task_list()
-
-@app.route(&quot;/delete&quot;, methods=['POST'])
-def delete():
-    tasks.pop(int(request.form['task']))
-
-    return task_list()
-
-
-app.run()
-                </code></pre>
-            </section>
-          </section>
-
-
         </section>
         <section style="text-align: left;" class="seb" data-background="images/end.jpeg">
             <h1 style="color:white">THE END</h1>
