@@ -264,27 +264,31 @@
                 <h2>Inheritance</h2>
                 <pre>
                     <code>
->>> class Parent(object):
-        def override(self):
-            print "PARENT override()"
+class Parent(object):
+    def override(self):
+        print("PARENT override()")
 
-        def implicit(self):
-            print "PARENT implicit()"
+    def implicit(self):
+        print("PARENT implicit()")
 
-        def altered(self):
-            print "PARENT altered()"
+    def altered(self):
+        print("PARENT altered()")
 
->>> class Child(Parent):
-        def override(self):
-            print "CHILD override()"
+class Child(Parent):
+    def override(self):
+        print("CHILD override()")
 
-        def altered(self):
-            print "CHILD, BEFORE PARENT altered()"
-            super(Child, self).altered()
-            print "CHILD, AFTER PARENT altered()"
+    def altered(self):
+        print("CHILD, BEFORE PARENT altered()")
+        super(Child, self).altered()
+        print("CHILD, AFTER PARENT altered()")
 
 dad = Parent()
 son = Child()
+
+son.implicit()
+son.override()
+son.altered()
                     </code>
                 </pre>
             </section>
@@ -292,22 +296,24 @@ son = Child()
                 <h2 class="seb">Multiple Inheritance</h2>
                 <pre>
                     <code>
->>> class First(object):
-        def __init__(self):
-            print "first"
+class First(object):
+    def __init__(self):
+        print ("first")
 
-    class Second(First):
-        def __init__(self):
-            print "second"
+class Second(First):
+    def __init__(self):
+        print ("second")
 
-    class Third(First):
-        def __init__(self):
-            print "third"
+class Third(First):
+    def __init__(self):
+        print ("third")
 
-    class Fourth(Second, Third):
-        def __init__(self):
-            super(Fourth, self).__init__()
-            print "that's it"
+class Fourth(Second, Third):
+    def __init__(self):
+        super(Fourth, self).__init__()
+        print ("that's it")
+
+Fourth()
                     </code>
                     </pre>
 		    <h4>So what's the order of resolution?</h4>
@@ -316,17 +322,19 @@ son = Child()
                 <h2 class="seb">Multiple Inheritance (BAD!!!)</h2>
                 <pre>
                     <code>
->>> class First(object):
-        def __init__(self):
-            print "first"
+class First(object):
+    def __init__(self):
+        print ("first")
 
-    class Second(First):
-        def __init__(self):
-            print "second"
+class Second(First):
+    def __init__(self):
+        print ("second")
 
-    class Third(First, Second):
-        def __init__(self):
-            print "third"
+class Third(First, Second):
+    def __init__(self):
+        print ("third")
+
+Third() # Oops!
                     </code>
                     </pre>
 		    <h4>So what's the order of resolution?</h4>
@@ -387,16 +395,20 @@ doubled_odds = [n * 2 for n in numbers if n % 2 == 1]
             <h2>Decorators</h2>
             <pre>
                 <code>
-def my_shiny_new_decorator(a_function_to_decorate):
+def my_decorator(a_function_to_decorate):
     def the_wrapper_around_the_original_function():
         print("Before the function runs")
         a_function_to_decorate()
         print("After the function runs")
     return the_wrapper_around_the_original_function
 
-@my_shiny_new_decorator
+
+@my_decorator
 def stand_alone_function():
     print("Leave me alone")
+
+stand_alone_function() #is the same as
+my_decorator(stand_alone_function())
                 </code>
             </pre>
             <ul>
